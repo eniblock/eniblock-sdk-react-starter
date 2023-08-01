@@ -24,7 +24,7 @@ function CheckComponent(): React.JSX.Element {
         }).catch((error) => {
             console.error('Code not received:', error);
         });
-    }, []);
+    });
 
     return (
         <div className="sweet-loading">

@@ -27,7 +27,7 @@ function App(): React.JSX.Element {
         setPublicKey('');
         setAddress('');
         setSdk(undefined);
-        authService.logout(localStorage.getItem('starter_sdk_react_access_token') ?? '');
+        await authService.logout(localStorage.getItem('starter_sdk_react_access_token') ?? '');
     }
 
     useEffect(() => {
@@ -45,12 +45,7 @@ function App(): React.JSX.Element {
                         accessTokenProvider: (() => Promise.resolve(localStorage.getItem('starter_sdk_react_access_token') ?? '')),
                         storageItems: [{alias: "UnsafeStorage", storage: new UnsafeStorage()}],
                     }));
-                    if (!localStorage.getItem('share-ECDSA')) {
-                        sdk!.wallet.destroy();
-                    }
-
                 }
-                return {};
             }
 
             fetchSdk().then(() => {
@@ -60,20 +55,22 @@ function App(): React.JSX.Element {
     }, [accessToken]);
 
     useEffect(() => {
-        if (sdk && !publicKey) {
+        if (sdk) {
             const fetchAccount = async () => {
-                if (sdk) {
-                    const wallet = await sdk.wallet.instantiate();
-                    const account = await wallet.account.instantiate('My first account');
-                    const publicKeyFromAccount = await account.getPublicKey();
-                    setPublicKey(publicKeyFromAccount);
-
-                    const addressFromAccount = await account.getAddress();
-                    setAddress(addressFromAccount);
-
-                    return {wallet, account, publicKeyFromAccount, addressFromAccount}
+                if (!localStorage.getItem('share-ECDSA')) {
+                    await sdk.wallet.destroy();
                 }
+                const wallet = await sdk.wallet.instantiate();
+                const account = await wallet.account.instantiate('My first account');
+                const publicKeyFromAccount = await account.getPublicKey();
+                setPublicKey(publicKeyFromAccount);
+
+                const addressFromAccount = await account.getAddress();
+                setAddress(addressFromAccount);
+
+                return {wallet, account, publicKeyFromAccount, addressFromAccount}
             }
+
             fetchAccount().then(walletAndAccount => {
                 console.log('Wallet and account:', walletAndAccount);
             }).catch(reason => console.error(reason));
