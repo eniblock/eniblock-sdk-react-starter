@@ -17,12 +17,12 @@ class AuthService {
         localStorage.setItem("starter_sdk_react_pkce_state", state);
         localStorage.setItem("starter_sdk_react_pkce_challenge", challenge);
 
-        const authorizationUrl = `${oauth2SdkUrl}/oauth2/auth?client_id=${encodeURIComponent(
+        const authorizationUrl = `${oauth2SdkUrl}/authorize?client_id=${encodeURIComponent(
             clientId,
         )}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(
             "openid profile email eniblock offline_access",
         )}&code_challenge=${encodeURIComponent(challenge)}&code_challenge_method=S256&audience=${encodeURIComponent(
-            "https://sdk.eniblock.com",
+            "https://eniblock-sdk-demo.eu.auth0.com/api/v2/",
         )}&state=${encodeURIComponent(state)}`;
         window.location.replace(authorizationUrl);
     }
@@ -30,7 +30,7 @@ class AuthService {
     // Method to handle logout
     async logout(accessToken: string) {
         await axios.post(
-            `${oauth2SdkUrl}/oauth2/revoke`,
+            `${oauth2SdkUrl}/oauth/revoke`,
             {
                 client_id: clientId,
                 token: accessToken,
@@ -65,7 +65,7 @@ class AuthService {
     private async getTokens() {
         try {
             const tokenResponse = await axios.post(
-                `${oauth2SdkUrl}/oauth2/token`,
+                `${oauth2SdkUrl}/oauth/token`,
                 {
                     client_id: clientId,
                     redirect_uri: redirectUri,
