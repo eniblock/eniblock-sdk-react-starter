@@ -3,7 +3,7 @@ import axios from "axios";
 
 const redirectUri = "https://a.myho.st:8888/check";
 const clientId = "W4JkWYy4Qy1PogYmwOBt9I3HhQlzqD2m";
-const oauth2SdkUrl = "https://eniblock-sdk-demo.eu.auth0.com";
+const oauth2SdkUrl = "https://auth.demo.eniblock.com";
 
 class AuthService {
     // Method to initiate login process

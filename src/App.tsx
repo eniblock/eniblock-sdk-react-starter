@@ -57,7 +57,7 @@ function App(): React.JSX.Element {
     useEffect(() => {
         if (sdk) {
             const fetchAccount = async () => {
-                if (!localStorage.getItem('share-ECDSA')) {
+                if (!localStorage.getItem(`share-${sdk.appId}-ECDSA`)) {
                     await sdk.wallet.destroy();
                 }
                 const wallet = await sdk.wallet.instantiate();
