@@ -1,9 +1,9 @@
 import { generateChallenge, generateVerifier } from "../utils/pkce";
 import axios from "axios";
 
-const redirectUri = "https://a.myho.st:8888/check";
-const clientId = "W4JkWYy4Qy1PogYmwOBt9I3HhQlzqD2m"; // gitleaks:allow
-const oauth2SdkUrl = "https://auth.demo.eniblock.com";
+const OAUTH2_ALLOWED_CALLBACK_URL = "https://a.myho.st:8888/check";
+const OAUTH2_CLIENTID = "W4JkWYy4Qy1PogYmwOBt9I3HhQlzqD2m"; // gitleaks:allow
+const OAUTH2_DOMAIN = "https://eniblock-sdk-demo.eu.auth0.com";
 
 class AuthService {
     // Method to initiate login process
@@ -17,22 +17,32 @@ class AuthService {
         localStorage.setItem("starter_sdk_react_pkce_state", state);
         localStorage.setItem("starter_sdk_react_pkce_challenge", challenge);
 
-        const authorizationUrl = `${oauth2SdkUrl}/authorize?client_id=${encodeURIComponent(
-            clientId,
-        )}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(
-            "openid profile email eniblock offline_access",
-        )}&code_challenge=${encodeURIComponent(challenge)}&code_challenge_method=S256&audience=${encodeURIComponent(
-            "https://eniblock-sdk-demo.eu.auth0.com/api/v2/",
-        )}&state=${encodeURIComponent(state)}`;
+        const queryParameters = {
+            client_id: OAUTH2_CLIENTID,
+            redirect_uri: OAUTH2_ALLOWED_CALLBACK_URL,
+            response_type: "code",
+            scope: "openid profile email eniblock offline_access",
+            code_challenge: challenge,
+            code_challenge_method: "S256",
+            audience: `${OAUTH2_DOMAIN}/api/v2/`,
+            state: state,
+        };
+
+        const encodedParameters = Object.entries(queryParameters)
+            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+            .join("&");
+
+        const authorizationUrl = `${OAUTH2_DOMAIN}/authorize?${encodedParameters}`;
+
         window.location.replace(authorizationUrl);
     }
 
     // Method to handle logout
     async logout(accessToken: string) {
         await axios.post(
-            `${oauth2SdkUrl}/oauth/revoke`,
+            `${OAUTH2_DOMAIN}/oauth/revoke`,
             {
-                client_id: clientId,
+                client_id: OAUTH2_CLIENTID,
                 token: accessToken,
             },
             {
@@ -65,10 +75,10 @@ class AuthService {
     private async getTokens() {
         try {
             const tokenResponse = await axios.post(
-                `${oauth2SdkUrl}/oauth/token`,
+                `${OAUTH2_DOMAIN}/oauth/token`,
                 {
-                    client_id: clientId,
-                    redirect_uri: redirectUri,
+                    client_id: OAUTH2_CLIENTID,
+                    redirect_uri: OAUTH2_ALLOWED_CALLBACK_URL,
                     grant_type: "authorization_code",
                     code_verifier: localStorage.getItem("starter_sdk_react_pkce_verifier"),
                     code: localStorage.getItem("starter_sdk_react_pkce_code"),
@@ -100,7 +110,7 @@ class AuthService {
     // Method to fetch user information using the access token
     getUserInfo(accessToken: string) {
         axios
-            .get(`${oauth2SdkUrl}/userinfo`, {
+            .get(`${OAUTH2_DOMAIN}/userinfo`, {
                 headers: { Authorization: `Bearer ${accessToken}` },
             })
             .then((response) => console.log("User info: ", response.data))
