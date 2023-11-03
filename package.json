@@ -1,9 +1,9 @@
 {
   "name": "eniblock-sdk-starter-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@eniblock/sdk": "^0.4.0-beta",
+    "@eniblock/sdk": "^1.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
