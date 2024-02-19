@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
+import { Eniblock, UnsafeStorage } from "@eniblock/sdk";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import './App.css';
+import logo from './logo.svg';
 import authService from "./services/auth-service";
-import {Eniblock, UnsafeStorage} from "@eniblock/sdk";
-import {useLocation} from "react-router-dom";
 
 function App(): React.JSX.Element {
 
@@ -43,7 +43,7 @@ function App(): React.JSX.Element {
                     setSdk(new Eniblock({
                         appId: 'eniblock-demo',
                         accessTokenProvider: (() => Promise.resolve(localStorage.getItem('starter_sdk_react_access_token') ?? '')),
-                        storageItems: [{alias: "UnsafeStorage", storage: new UnsafeStorage()}],
+                        storage: new UnsafeStorage(),
                     }));
                 }
             }
