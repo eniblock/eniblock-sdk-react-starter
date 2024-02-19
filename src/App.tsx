@@ -1,9 +1,9 @@
-import { Eniblock, UnsafeStorage } from "@eniblock/sdk";
-import React, { useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom";
-import './App.css';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
+import './App.css';
 import authService from "./services/auth-service";
+import {Eniblock, UnsafeStorage} from "@eniblock/sdk";
+import {useLocation} from "react-router-dom";
 
 function App(): React.JSX.Element {
 
