@@ -60,15 +60,14 @@ function App(): React.JSX.Element {
                 if (!localStorage.getItem(`share-${sdk.appId}-ECDSA`)) {
                     await sdk.wallet.destroy();
                 }
-                const wallet = await sdk.wallet.instantiate();
-                const account = await wallet.account.instantiate('My first account');
-                const publicKeyFromAccount = await account.getPublicKey();
+                const account = await sdk.account.instantiate('My first account');
+                const publicKeyFromAccount = account.getPublicKey();
                 setPublicKey(publicKeyFromAccount);
 
                 const addressFromAccount = await account.getAddress();
                 setAddress(addressFromAccount);
 
-                return {wallet, account, publicKeyFromAccount, addressFromAccount}
+                return {account, publicKeyFromAccount, addressFromAccount}
             }
 
             fetchAccount().then(walletAndAccount => {
