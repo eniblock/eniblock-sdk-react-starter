@@ -1,72 +1,72 @@
 {
-  "name": "eniblock-sdk-starter-react",
-  "version": "1.1.0",
-  "private": true,
-  "dependencies": {
-    "@eniblock/sdk": "^1.1.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "axios": "^1.4.0",
-    "buffer": "^6.0.3",
-    "core-js": "^3.31.1",
-    "crypto-browserify": "^3.12.0",
-    "crypto-js": "^4.2.0",
-    "node-polyfill-webpack-plugin": "^2.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.13.0",
-    "react-scripts": "5.0.1",
-    "react-spinners": "^0.13.8",
-    "stream-browserify": "^3.0.0",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/preset-env": "^7.22.5",
-    "@babel/preset-react": "^7.22.5",
-    "@types/crypto-js": "^4.2.1",
-    "babel-loader": "^9.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "cross-env": "^7.0.3",
-    "file-loader": "^6.2.0",
-    "react-app-rewired": "^2.2.1",
-    "url-loader": "^4.1.1",
-    "webpack": "~5.76.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  },
-  "scripts": {
-    "webpack": "webpack",
-    "webpack-dev-server": "webpack-dev-server",
-    "start": "cross-env HTTPS=true cross-env HOST=a.myho.st cross-env PORT=8888 react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "eniblock-sdk-starter-react",
+    "version": "1.2.0",
+    "private": true,
+    "dependencies": {
+        "@eniblock/sdk": "^1.2.0",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^13.0.0",
+        "@testing-library/user-event": "^13.2.1",
+        "@types/jest": "^27.0.1",
+        "@types/node": "^16.7.13",
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "axios": "^1.4.0",
+        "buffer": "^6.0.3",
+        "core-js": "^3.31.1",
+        "crypto-browserify": "^3.12.0",
+        "crypto-js": "^4.2.0",
+        "node-polyfill-webpack-plugin": "^2.0.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.13.0",
+        "react-scripts": "5.0.1",
+        "react-spinners": "^0.13.8",
+        "stream-browserify": "^3.0.0",
+        "typescript": "^4.4.2",
+        "web-vitals": "^2.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.22.5",
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "@babel/preset-env": "^7.22.5",
+        "@babel/preset-react": "^7.22.5",
+        "@types/crypto-js": "^4.2.1",
+        "babel-loader": "^9.1.2",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+        "cross-env": "^7.0.3",
+        "file-loader": "^6.2.0",
+        "react-app-rewired": "^2.2.1",
+        "url-loader": "^4.1.1",
+        "webpack": "~5.76.1",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.1"
+    },
+    "scripts": {
+        "webpack": "webpack",
+        "webpack-dev-server": "webpack-dev-server",
+        "start": "cross-env HTTPS=true cross-env HOST=a.myho.st cross-env PORT=8888 react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test",
+        "eject": "react-app-rewired eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
