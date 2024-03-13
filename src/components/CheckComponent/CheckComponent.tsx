@@ -1,7 +1,7 @@
-import React, {CSSProperties, useEffect} from 'react';
-import {ClipLoader} from "react-spinners";
+import React, { CSSProperties, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import authService from "../../services/auth-service";
-import {useNavigate} from "react-router-dom";
 
 const override: CSSProperties = {
     display: "block",

@@ -32,10 +32,14 @@
         "@babel/preset-env": "^7.22.5",
         "@babel/preset-react": "^7.22.5",
         "@types/crypto-js": "^4.2.1",
+        "@typescript-eslint/eslint-plugin": "^7.2.0",
+        "@typescript-eslint/parser": "^7.2.0",
         "babel-loader": "^9.1.2",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
         "cross-env": "^7.0.3",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react": "^7.34.0",
         "file-loader": "^6.2.0",
         "react-app-rewired": "^2.2.1",
         "url-loader": "^4.1.1",
@@ -49,7 +53,8 @@
         "start": "cross-env HTTPS=true cross-env HOST=a.myho.st cross-env PORT=8888 react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
-        "eject": "react-app-rewired eject"
+        "eject": "react-app-rewired eject",
+        "lint": "eslint --max-warnings=0 ."
     },
     "eslintConfig": {
         "extends": [
